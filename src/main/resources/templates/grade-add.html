@@ -1,0 +1,26 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Add</title>
+    <div th:replace="fragments :: navigator"></div>
+</head>
+<body>
+<h1>Grade Add</h1>
+<form th:action="@{/grade/add}" th:method="post" th:object="${grade}">
+   <input type="hidden" th:field="*{id}" th:value="*{id}" >
+   <input type="hidden" name="studentParam" th:value="${studentId}" >
+    Subject: <select th:field="*{subject}">
+    <option th:each="subject : ${subjects}" th:text="${subject}" th:value="${subject}">
+            </select>
+    <br/>
+    Value:  <input th:field="*{value}" th:value="*{value}" type="number" min="2" max="6" step="0.5">
+    <br/>
+    <br/>
+    <input type="submit">
+</form>
+</body>
+</html>

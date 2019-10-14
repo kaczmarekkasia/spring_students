@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Add</title>
+</head>
+<body>
+<h1>Student add</h1>
+<div th:replace="fragments :: navigator"></div>
+<form th:action="@{/student/add}" th:method="post" th:object="${student}">
+    <input type="hidden" th:field="*{id}" th:value="*{id}">
+    Name:     <input type="text" th:field="*{name}" th:value="*{name}">
+    Surname:  <input type="text" th:field="*{surname}" th:value="*{surname}">
+    Age:      <input type="number" th:field="*{age}" th:value="*{age}">
+    Is Alive: <input type="checkbox" th:field="*{alive}" th:value="*{alive}">
+    <input type="submit">
+</form>
+</body>
+</html>

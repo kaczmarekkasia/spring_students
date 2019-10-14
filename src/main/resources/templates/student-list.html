@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+</head>
+<body>
+    <h1>Student List</h1>
+    <div th:replace="fragments :: navigator"></div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Alive</th>
+            <th></th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.getId()}"></td>
+            <td th:text="${student.getName()}"></td>
+            <td th:text="${student.getSurname()}"></td>
+            <td th:text="${student.getAge()}"></td>
+            <td th:text="${student.isAlive()}"></td>
+            <td>
+                <a th:href="@{'/student/edit/' + ${student.getId()}}"> Edytuj </a>
+                <a th:href="@{'/student/delete/' + ${student.getId()}}"> Usuń </a>
+                <a th:href="@{'/grade/add/' + ${student.getId()}}"> Dodaj ocenę </a>
+                <a th:href="@{'/student/grades/' + ${student.getId()}}">Listuj oceny</a>
+                <br/>
+                <br/>
+                <a th:href="@{'/student/edit2?studentId=' + ${student.getId()}}"> Edytuj byParam </a>
+                <a th:href="@{'/student/delete2?studentId=' + ${student.getId()}}"> Usuń2 byParam </a>
+                <br/>
+
+            </td>
+
+        </tr>
+    </table>
+</body>
+</html>
